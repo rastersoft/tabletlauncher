@@ -28,7 +28,7 @@ public class desktop_entry {
 	public  GLib.Icon entry_icon;
 
 	private string[]? entry_group;
-	private GLib.DesktopAppInfo info;
+	public GLib.DesktopAppInfo info;
 	
 	public desktop_entry(string file) {
 	
@@ -114,9 +114,6 @@ class desktop_entries {
 		}
 		var home_entries=GLib.Path.build_filename(GLib.Environment.get_home_dir(),".local","share","applications");
 		this.refresh_entry(home_entries);
-		foreach(var element2 in categories) {
-			GLib.stdout.printf("Categoria %s\n",element2);
-		}
 	}
 
 	private void refresh_entry(string path) {
@@ -140,7 +137,6 @@ class desktop_entries {
 				this.refresh_entry(full_path);
 			} else {
 				if (full_path.has_suffix(".desktop")) {
-					GLib.stdout.printf("Compruebo %s\n",full_path);
 					var entry=new desktop_entry(full_path);
 					var groups=entry.get_groups();
 					if (groups!=null) {

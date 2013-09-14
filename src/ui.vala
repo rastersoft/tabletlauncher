@@ -103,7 +103,7 @@ class launcher_ui:Gtk.Window {
 		nbutton=new Gtk.Button.with_label (_("Others"));
 		button_categories+=nbutton;
 		nbutton.clicked.connect(() => {
-			this.filter_apps("Others");
+			this.filter_apps("Other");
 		});
 
 		// The ButtonBox:
@@ -122,6 +122,11 @@ class launcher_ui:Gtk.Window {
 
 	 	model = new Gtk.ListStore (3, typeof (Gdk.Pixbuf), typeof (string), typeof (GLib.DesktopAppInfo));
 		view = new Gtk.IconView.with_model(model);
+		view.add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
+		view.item_activated.connect(this.on_click);
+		view.activate_on_single_click=true;
+		view.selection_mode=SelectionMode.NONE;
+		view.columns=-1;
 		view.set_pixbuf_column (0);
 		view.set_text_column (1);
 		icon_container.add(view);
@@ -130,6 +135,18 @@ class launcher_ui:Gtk.Window {
 
 		this.refresh_ui();
 		
+	}
+	
+	public void on_click(Gtk.TreePath path) {
+	
+		var iter = Gtk.TreeIter();
+		Value val;
+		GLib.DesktopAppInfo *info;
+		
+		model.get_iter(out iter,path);
+		model.get_value(iter,2,out val);
+		info=val.get_object();
+		info->launch(null,null);
 	}
 	
 	public void refresh_ui() {
@@ -144,15 +161,22 @@ class launcher_ui:Gtk.Window {
 		TreeIter iter;
 		foreach(var element in entries) {
 			this.model.append (out iter);
-			try {
-				var tmp1=theme.lookup_by_gicon(element.entry_icon,48,0);
-				pbuf = tmp1.load_icon();
-			} catch {
+			if (element.entry_icon!=null) {
+				try {
+					var tmp1=theme.lookup_by_gicon(element.entry_icon,48,0);
+					pbuf = tmp1.load_icon();
+				} catch {
+					pbuf=null;
+				}
+			} else {
 				pbuf=null;
+			}
+			if (pbuf==null) {
+				pbuf = this.view.render_icon(Stock.FILE,IconSize.DIALOG,"");
 			}
 			this.model.set (iter,0,pbuf);
 			this.model.set (iter,1,element.entry_name);
-			this.model.set (iter,2,element);
+			this.model.set (iter,2,element.info);
 		}
 	}
 	
