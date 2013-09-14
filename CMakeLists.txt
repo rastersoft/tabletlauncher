@@ -24,8 +24,8 @@ find_package(PkgConfig)
 
 pkg_check_modules(DEPS REQUIRED
 	gee-1.0
-	glib-2.0
 	gio-unix-2.0
+	glib-2.0
 	gtk+-3.0
 )
 

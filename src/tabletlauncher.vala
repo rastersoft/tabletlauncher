@@ -20,6 +20,8 @@ using GLib;
 using Gtk;
 using Gee;
 
+// project version=0.1.0
+
 int main(string[] argv) {
 
 	Gtk.init(ref argv);
