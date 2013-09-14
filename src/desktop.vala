@@ -97,7 +97,6 @@ public class desktop_entry {
 class desktop_entries {
 
 	private Gee.List<desktop_entry> entries;
-	public string[] categories;
 
 	public desktop_entries() {
 		this.refresh_entries();
@@ -105,15 +104,20 @@ class desktop_entries {
 
 	public void refresh_entries() {
 	
-		this.categories={};
-	
 		this.entries=new Gee.ArrayList<desktop_entry>();
-		var paths=GLib.Environment.get_variable("XDG_DATA_DIRS").split(":");
+		var lpaths=GLib.Environment.get_variable("XDG_DATA_DIRS");
+		string[] paths;
+		if (lpaths==null) {
+			paths={};
+		} else {
+			paths=lpaths.split(":");
+		}
+		paths+="/usr/share";
+		paths+="/usr/local/share";
+		paths+=GLib.Path.build_filename(GLib.Environment.get_home_dir(),".local","share");
 		foreach(var path in paths) {
 			this.refresh_entry(GLib.Path.build_filename(path,"applications"));
 		}
-		var home_entries=GLib.Path.build_filename(GLib.Environment.get_home_dir(),".local","share","applications");
-		this.refresh_entry(home_entries);
 	}
 
 	private void refresh_entry(string path) {
@@ -140,20 +144,15 @@ class desktop_entries {
 					var entry=new desktop_entry(full_path);
 					var groups=entry.get_groups();
 					if (groups!=null) {
-						this.entries.add(entry);
-						
-						bool found;
-						foreach(var element in groups) {
-							found=false;
-							foreach(var element2 in categories) {
-								if(element==element2) {
-									found=true;
-									break;
-								}
+						bool found=false;
+						foreach(var element in this.entries) {
+							if((element.entry_icon.equal(entry.entry_icon))&&(element.info.get_executable()==entry.info.get_executable())) {
+								found=true;
+								break;
 							}
-							if (found==false) {
-								categories+=element;
-							}
+						}
+						if (found==false) {
+							this.entries.add(entry);
 						}
 					}
 				}
