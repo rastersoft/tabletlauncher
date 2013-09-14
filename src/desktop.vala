@@ -1,13 +1,33 @@
+/* Tablet Launcher
+ * A simple app launcher, oriented to tablet devices
+ *
+ * (C)2013 Raster Software Vigo (Sergio Costas)
+ *
+ * This code is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>. */
+
+
 using GLib;
 using Gee;
+//needed for autovala
 //using GIO-unix;
 
-class desktop_entry {
+public class desktop_entry {
 
 	public  string entry_name;
 	public  GLib.Icon entry_icon;
 
-	public  string[]? entry_group;
+	private string[]? entry_group;
 	private GLib.DesktopAppInfo info;
 	
 	public desktop_entry(string file) {
@@ -66,14 +86,20 @@ class desktop_entry {
 		}
 		return false;
 	}
+	
+	public string[] get_groups() {
+	
+		return this.entry_group;
+	
+	}
 }
 
-class desktop {
+class desktop_entries {
 
 	private Gee.List<desktop_entry> entries;
 	public string[] categories;
 
-	public desktop() {
+	public desktop_entries() {
 		this.refresh_entries();
 	}
 
@@ -116,11 +142,12 @@ class desktop {
 				if (full_path.has_suffix(".desktop")) {
 					GLib.stdout.printf("Compruebo %s\n",full_path);
 					var entry=new desktop_entry(full_path);
-					if (entry.entry_group!=null) {
+					var groups=entry.get_groups();
+					if (groups!=null) {
 						this.entries.add(entry);
 						
 						bool found;
-						foreach(var element in entry.entry_group) {
+						foreach(var element in groups) {
 							found=false;
 							foreach(var element2 in categories) {
 								if(element==element2) {
@@ -137,5 +164,15 @@ class desktop {
 			}
 		}
 	}
-
+	
+	public Gee.List<desktop_entry> get_entries(string category) {
+	
+		var filtered_entries=new Gee.ArrayList<desktop_entry>();
+		foreach(var element in this.entries) {
+			if ((category=="")||(element.is_in_group(category))) {
+				filtered_entries.add(element);
+			}
+		}
+		return filtered_entries;
+	}
 }

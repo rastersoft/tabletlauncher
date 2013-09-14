@@ -43,14 +43,15 @@ include(ValaPrecompile)
 
 set(VALA_PACKAGES
 	gee-1.0
-	gio-unix-2.0
 	glib-2.0
+	gio-unix-2.0
 	gtk+-3.0
 )
 
 set(APP_SOURCES
 	${CMAKE_CURRENT_BINARY_DIR}/Config.vala
 	desktop.vala
+	ui.vala
 	tabletlauncher.vala
 )
 
