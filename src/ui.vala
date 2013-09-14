@@ -32,10 +32,10 @@ class launcher_ui:Gtk.Window {
 	
 	public launcher_ui() {
 	
-		this.set_default_size (800, 480);
 		this.destroy.connect(() => {
 			Gtk.main_quit();
 		});
+		this.title="tabletwm_launcher";
 
 		categories="";
 
