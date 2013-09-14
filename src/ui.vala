@@ -125,7 +125,7 @@ class launcher_ui:Gtk.Window {
 		view.add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
 		view.item_activated.connect(this.on_click);
 		view.activate_on_single_click=true;
-		view.selection_mode=SelectionMode.NONE;
+		view.selection_mode=SelectionMode.SINGLE;
 		view.columns=-1;
 		view.set_pixbuf_column (0);
 		view.set_text_column (1);
@@ -135,6 +135,12 @@ class launcher_ui:Gtk.Window {
 
 		this.refresh_ui();
 		
+	}
+	
+	public bool unselect() {
+	
+		this.view.unselect_all();
+		return false;
 	}
 	
 	public void on_click(Gtk.TreePath path) {
@@ -147,6 +153,7 @@ class launcher_ui:Gtk.Window {
 		model.get_value(iter,2,out val);
 		info=val.get_object();
 		info->launch(null,null);
+		GLib.Timeout.add(2000,this.unselect);
 	}
 	
 	public void refresh_ui() {
