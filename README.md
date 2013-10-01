@@ -3,4 +3,4 @@ tabletlauncher
 
 An application launcher for small devices. Specifically designed to be used with tabletwm.
 
-Current version: 0.1.0
+Current version: 0.5.0
