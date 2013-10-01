@@ -161,7 +161,7 @@ class desktop_entries:GLib.Object {
 	}
 	
 	public static int compare_entries (desktop_entry? a, desktop_entry? b) {
-		return (a.entry_name.collate(b.entry_name));
+		return (a.entry_name.casefold().collate(b.entry_name.casefold()));
 	}
 
 	public Gee.List<desktop_entry> get_entries(string category) {
