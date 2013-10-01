@@ -27,12 +27,12 @@ set (GETTEXT_PACKAGE "tabletlauncher")
 set (RELEASE_NAME "tabletlauncher")
 set (CMAKE_C_FLAGS "")
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
-set (VERSION "0.3.0")
+set (VERSION "0.4.0")
 set (DOLLAR "$")
 
 configure_file (${CMAKE_SOURCE_DIR}/src/Config.vala.cmake ${CMAKE_BINARY_DIR}/src/Config.vala)
 add_definitions(-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
-set (VERSION "0.3.0")
+set (VERSION "0.4.0")
 add_definitions(${DEPS_CFLAGS})
 link_libraries( ${DEPS_LIBRARIES} )
 link_directories( ${DEPS_LIBRARY_DIRS} )
@@ -50,8 +50,8 @@ set(VALA_PACKAGES
 
 set(APP_SOURCES
 	${CMAKE_CURRENT_BINARY_DIR}/Config.vala
-	desktop.vala
 	ui.vala
+	desktop.vala
 	tabletlauncher.vala
 )
 

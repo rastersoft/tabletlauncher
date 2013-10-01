@@ -75,7 +75,7 @@ class launcher_ui:Gtk.Window {
 		nbutton.clicked.connect(() => {
 			this.filter_apps("Graphics");
 		});
-		nbutton=new Gtk.Button.with_label (_("Network"));
+		nbutton=new Gtk.Button.with_label (_("Internet"));
 		button_categories+=nbutton;
 		nbutton.clicked.connect(() => {
 			this.filter_apps("Network");

@@ -22,10 +22,10 @@ using Gee;
 //needed for autovala
 //using GIO-unix;
 
-public class desktop_entry {
+public class desktop_entry:GLib.Object {
 
-	public  string entry_name;
-	public  GLib.Icon entry_icon;
+	public string entry_name;
+	public GLib.Icon entry_icon;
 
 	private string[]? entry_group;
 	public GLib.DesktopAppInfo info;
@@ -94,7 +94,7 @@ public class desktop_entry {
 	}
 }
 
-class desktop_entries {
+class desktop_entries:GLib.Object {
 
 	private Gee.List<desktop_entry> entries;
 
@@ -160,6 +160,10 @@ class desktop_entries {
 		}
 	}
 	
+	public static int compare_entries (desktop_entry? a, desktop_entry? b) {
+		return (a.entry_name.collate(b.entry_name));
+	}
+
 	public Gee.List<desktop_entry> get_entries(string category) {
 	
 		var filtered_entries=new Gee.ArrayList<desktop_entry>();
@@ -168,6 +172,7 @@ class desktop_entries {
 				filtered_entries.add(element);
 			}
 		}
+		filtered_entries.sort(this.compare_entries);
 		return filtered_entries;
 	}
 }
