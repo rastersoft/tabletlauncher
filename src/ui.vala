@@ -160,9 +160,9 @@ class launcher_ui:Gtk.Window {
 	
 		this.app_list.refresh_entries();
 		this.model.clear();
-		view.margin=15;
+		view.margin=10;
 		view.item_width=96;
-		view.item_padding=15;
+		view.item_padding=10;
 		view.spacing=2;
 
 		var theme = Gtk.IconTheme.get_default();
