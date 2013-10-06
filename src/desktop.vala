@@ -172,7 +172,7 @@ class desktop_entries:GLib.Object {
 				filtered_entries.add(element);
 			}
 		}
-		filtered_entries.sort(this.compare_entries);
+		filtered_entries.sort(desktop_entries.compare_entries);
 		return filtered_entries;
 	}
 }

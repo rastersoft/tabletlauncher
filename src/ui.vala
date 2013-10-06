@@ -23,10 +23,10 @@ using Gee;
 class launcher_ui:Gtk.Window {
 
 	private Gtk.ListStore model;
-	private Gtk.TreeIter iter;
+	//private Gtk.TreeIter iter;
 	private Gtk.IconView view;
 	private desktop_entries app_list;
-	private Gtk.Box box;
+	//private Gtk.Box box;
 	Gtk.Button[] button_categories;
 	string categories;
 	
