@@ -24,6 +24,11 @@ using Gee;
 
 int main(string[] argv) {
 
+	Intl.bindtextdomain(Constants.GETTEXT_PACKAGE, GLib.Path.build_filename(Constants.DATADIR,"locale"));
+	//Intl.setlocale (LocaleCategory.ALL, "");
+	Intl.textdomain("tabletlauncher");
+	Intl.bind_textdomain_codeset("tabletlauncher", "UTF-8" );
+
 	Gtk.init(ref argv);
 
 	var dk=new launcher_ui();
