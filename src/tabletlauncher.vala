@@ -20,7 +20,7 @@ using GLib;
 using Gtk;
 using Gee;
 
-// project version=0.6.0
+// project version=0.8.0
 
 int main(string[] argv) {
 
