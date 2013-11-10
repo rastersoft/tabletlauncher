@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.6.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-10 22:44+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/raster/workspace/launcher/po/../src/ui.vala:48
+msgid "All"
+msgstr "Todas"
+
+#: /home/raster/workspace/launcher/po/../src/ui.vala:53
+msgid "Multimedia"
+msgstr "Multimedia"
+
+#: /home/raster/workspace/launcher/po/../src/ui.vala:58
+msgid "Development"
+msgstr "Desarrollo"
+
+#: /home/raster/workspace/launcher/po/../src/ui.vala:63
+msgid "Education"
+msgstr "Educación"
+
+#: /home/raster/workspace/launcher/po/../src/ui.vala:68
+msgid "Games"
+msgstr "Juegos"
+
+#: /home/raster/workspace/launcher/po/../src/ui.vala:73
+msgid "Graphics"
+msgstr "Gráficos"
+
+#: /home/raster/workspace/launcher/po/../src/ui.vala:78
+msgid "Internet"
+msgstr "Internet"
+
+#: /home/raster/workspace/launcher/po/../src/ui.vala:83
+msgid "Office"
+msgstr "Oficina"
+
+#: /home/raster/workspace/launcher/po/../src/ui.vala:88
+msgid "Settings"
+msgstr "Configuración"
+
+#: /home/raster/workspace/launcher/po/../src/ui.vala:93
+msgid "System"
+msgstr "Sistema"
+
+#: /home/raster/workspace/launcher/po/../src/ui.vala:98
+msgid "Utility"
+msgstr "Utilidades"
+
+#: /home/raster/workspace/launcher/po/../src/ui.vala:103
+msgid "Others"
+msgstr "Otras"
