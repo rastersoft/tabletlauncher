@@ -24,8 +24,8 @@ endif()
 find_package(PkgConfig)
 
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} gee-1.0)
-set(MODULES_TO_CHECK ${MODULES_TO_CHECK} glib-2.0)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} gio-unix-2.0)
+set(MODULES_TO_CHECK ${MODULES_TO_CHECK} glib-2.0)
 set(MODULES_TO_CHECK ${MODULES_TO_CHECK} gtk+-3.0)
 
 pkg_check_modules(DEPS REQUIRED ${MODULES_TO_CHECK})

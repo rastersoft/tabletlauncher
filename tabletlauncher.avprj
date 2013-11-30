@@ -1,21 +1,21 @@
 ### AutoVala Project ###
-autovala_version: 6
+autovala_version: 7
 project_name: tabletlauncher
-vala_version: 0.18
+vala_version: 0.20
+
+vala_binary: src/tabletlauncher
+*version: 0.8.0
+*vala_check_package: gee-1.0
+*vala_check_package: gio-unix-2.0
+*vala_check_package: glib-2.0
+*vala_check_package: gtk+-3.0
+*vala_source: desktop.vala
+*vala_source: tabletlauncher.vala
+*vala_source: ui.vala
 
 *po: po
 
 *data: data/local
 
 *doc: doc
-
-vala_binary: src/tabletlauncher
-*version: 0.8.0
-*vala_check_package: gee-1.0
-*vala_check_package: glib-2.0
-*vala_check_package: gio-unix-2.0
-*vala_check_package: gtk+-3.0
-*vala_source: ui.vala
-*vala_source: desktop.vala
-*vala_source: tabletlauncher.vala
 
