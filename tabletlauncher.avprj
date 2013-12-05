@@ -6,6 +6,7 @@ vala_version: 0.20
 vala_binary: src/tabletlauncher
 *version: 0.8.0
 *vala_check_package: gee-1.0
+*vala_check_package: gio-2.0
 *vala_check_package: gio-unix-2.0
 *vala_check_package: glib-2.0
 *vala_check_package: gtk+-3.0
